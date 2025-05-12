@@ -1,7 +1,7 @@
 import streamlit as st
 from ocr_agent import extract_card_info
 
-st.title("카드 영수증 OCR 추출기")
+st.title("카드 영수증 OCR 추출기 (Google Vision)")
 
 uploaded_file = st.file_uploader("영수증 이미지를 업로드하세요", type=["png", "jpg", "jpeg"])
 

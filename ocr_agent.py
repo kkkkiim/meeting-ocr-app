@@ -1,9 +1,12 @@
 from google.cloud import vision
 from google.oauth2 import service_account
+import streamlit as st 
+import json             
 import re
 
-# 서비스 계정 키 로딩
-credentials = service_account.Credentials.from_service_account_file("gcp_key.json")
+# ✅ 수정된 부분: Streamlit Secrets에서 GCP 키 로딩
+service_account_info = json.loads(st.secrets["GCP_KEY_JSON"])
+credentials = service_account.Credentials.from_service_account_info(service_account_info)
 client = vision.ImageAnnotatorClient(credentials=credentials)
 
 def extract_card_info(image_file):
